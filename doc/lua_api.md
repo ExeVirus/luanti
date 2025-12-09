@@ -3760,7 +3760,7 @@ Global only styles:
 Inheriting styles (affects child elements):
 
 * `color`: Default text color. Given color is a `colorspec`.
-* `hovercolor`: Color of <action> tags when mouse is over.
+* `hovercolor`: Color of `<action>` tags when mouse is over.
 * `size`: Default text size.
 * `font`: Default text font (`mono` or `normal`).
 * `halign`: Default text horizontal alignment (`left`, `right`, `center`, `justify`).

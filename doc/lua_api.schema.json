@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Luanti API Docs Schema",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/section_or_element_or_list"
+  },
+  "definitions": {
+    "section_or_element_or_list": {
+      "oneOf": [
+        { "$ref": "#/definitions/element" },
+        { "$ref": "#/definitions/section" },
+        { "$ref": "#/definitions/list" }
+      ]
+    },
+    "list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/section_or_element_or_list"
+      }
+    },
+    "section": {
+      "type": "object",
+      "description": "An object where keys are headings (e.g., 'Introduction') and values are lists of content.",
+      "additionalProperties": {
+        "$ref": "#/definitions/list"
+      },
+      "not": {
+        "required": ["type"]
+      }
+    },
+    "element": {
+      "type": "object",
+      "description": "Content leaf of text, code, or noncode codeblock",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["text", "code", "pre"]
+        },
+        "content": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "code": {
+          "description": "No Validation Yet"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
